@@ -1,7 +1,6 @@
 # Aplicación principal
 import tkinter as tk
 from tkinter import messagebox
-from modules.presupuesto import ventana_presupuesto
 """from modules.ganancias import ganancias
 from modules.pedidos import pedidios 
 from modules.presupuesto import calculo_presupuestario"""
