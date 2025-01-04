@@ -1,44 +1,43 @@
-# Aplicación principal
 import tkinter as tk
-from tkinter import messagebox
-"""from modules.ganancias import ganancias
-from modules.pedidos import pedidios 
-from modules.presupuesto import calculo_presupuestario"""
+from tkinter import ttk
+from modules.pedidos import guardar_pedido
 
-def main():
+# Crear la ventana principal
+root = tk.Tk()
+root.title("Phoenix 3D")
+root.geometry("600x400")
 
-    def mostrar_presupuestos():
-        messagebox.showinfo("Presupuestos", "Funcionalidad de Presupuestos")
+# Etiquetas y entradas para el formulario
+frame_formulario = ttk.Frame(root)
+frame_formulario.pack(pady=20)
 
-    def mostrar_pedidos():
-        messagebox.showinfo("Pedidos", "Funcionalidad de Pedidos")
+# Cliente
+label_cliente = ttk.Label(frame_formulario, text="Cliente:")
+label_cliente.grid(row=0, column=0, padx=5, pady=5, sticky="e")
+entry_cliente = ttk.Entry(frame_formulario, width=30)
+entry_cliente.grid(row=0, column=1, padx=5, pady=5)
 
-    def mostrar_ganancias():
-        messagebox.showinfo("Ganancias", "Funcionalidad de Ganancias")
+# Objeto
+label_objeto = ttk.Label(frame_formulario, text="Objeto:")
+label_objeto.grid(row=1, column=0, padx=5, pady=5, sticky="e")
+entry_objeto = ttk.Entry(frame_formulario, width=30)
+entry_objeto.grid(row=1, column=1, padx=5, pady=5)
 
-    # Crear la ventana principal
-    root = tk.Tk()
-    root.title("Gestión de Finanzas - Impresión 3D")
-    root.geometry("300x200")
+# Cantidad
+label_cantidad = ttk.Label(frame_formulario, text="Cantidad:")
+label_cantidad.grid(row=2, column=0, padx=5, pady=5, sticky="e")
+entry_cantidad = ttk.Entry(frame_formulario, width=30)
+entry_cantidad.grid(row=2, column=1, padx=5, pady=5)
 
-    # Crear el menú 
-    menu_bar = tk.Menu(root)
+# Fecha de entrega
+label_fecha = ttk.Label(frame_formulario, text="Fecha de entrega:")
+label_fecha.grid(row=3, column=0, padx=5, pady=5, sticky="e")
+entry_fecha = ttk.Entry(frame_formulario, width=30)
+entry_fecha.grid(row=3, column=1, padx=5, pady=5)
 
-    # Menú 
-    menu_opciones = tk.Menu(menu_bar, tearoff=0)
-    menu_opciones.add_command(label="Presupuestos", command=mostrar_presupuestos)
-    menu_opciones.add_command(label="Pedidos", command=mostrar_pedidos)
-    menu_opciones.add_command(label="Ganancias", command=mostrar_ganancias)
-    menu_opciones.add_separator()
-    menu_opciones.add_command(label="Salir", command=root.quit)
+# Botón para guardar
+btn_guardar = ttk.Button(root, text="Guardar Pedido", command=guardar_pedido)
+btn_guardar.pack(pady=10)
 
-    menu_bar.add_cascade(label="Opciones", menu=menu_opciones)
-
-    # Mostrar el menú
-    root.config(menu=menu_bar)
-
-    # Correr la ventana principal
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
+# Iniciar el loop principal de la interfaz
+root.mainloop()
